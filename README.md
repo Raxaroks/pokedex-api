@@ -25,3 +25,15 @@ npm run start:dev
 ```
 localhost:3000/api/v2/seed
 ```
+
+# How to run a environment build
+1) Create the required environment file, for instance: ```.env.prod```
+2) Populate environment variables
+3) Build the new image:
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+4) EXTRA! Run in dettached mode:
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up -d
+```

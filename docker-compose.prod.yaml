@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  pokedex-service:
+    depends_on:
+      - db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: pokedex-docker
+    container_name: pokedex-service
+    restart: always # if the container stops, it will restart
+    ports:
+      - "${PORT}:${PORT}"
+    # working_dir: /var/www/pokedex
+    environment:
+      POKEMONS_MONGODB_URL: ${POKEMONS_MONGODB_URL}
+      MONGODB_NAME: ${MONGODB_NAME}
+      PORT: ${PORT}
+    # volumes:
+    #   - ./:/var/www/pokedex
+
+  db:
+    image: mongo:5
+    container_name: mongo-pkmn
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: pokemon-mongodb
+    volumes:
+      - ./mongo:/data/db

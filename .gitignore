@@ -1,6 +1,7 @@
 
 # local environment file
 .env
+.env.prod
 
 # local temporary mongo folder
 /mongo

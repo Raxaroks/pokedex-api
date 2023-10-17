@@ -1,0 +1,12 @@
+
+node_modules/
+dist/
+mongo/
+
+.git/
+.gitignore
+
+README.md
+.prettierrc
+pokedex-api.postman_collection
+.env
